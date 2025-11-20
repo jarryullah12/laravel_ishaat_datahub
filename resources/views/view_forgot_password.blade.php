@@ -290,8 +290,8 @@
 
        
         </form>
-   
- @if(isset($view_forgots))
+       
+ @if(isset($view_forgots) && count($view_forgots) > 0)
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -301,17 +301,20 @@
         </thead>
 
         <tbody>
-        @forelse($view_forgots as $view_forgot)
+        @foreach($view_forgots as $view_forgot)
             <tr>
                 <td>{{ $view_forgot->password }}</td>
             </tr>
-        @empty
-           
-        @endforelse
+        @endforeach
         </tbody>
     </table>
 
-@endif
+    @elseif(isset($view_forgots) && count($view_forgots) == 0)
+    <h4 class="text-center">اپنا ریکارڈ درج کریں۔</h4>
+
+    @else
+
+    @endif
        
     </div>
             </div>

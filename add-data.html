@@ -1,20 +1,9 @@
-@if(Session::has('user'))
-<div style="padding: 10px 20px;">
-            
-            <div class="form-header">
-            <h1>وکالت اشاعت</h1>
-             <div  style="text-align:center;font-size: 20; ">
-                <p>تحریک جدید انجمن احمدیہ ربوہ پاکستان</p>
-            </div>
-        </div>
-        </div>
-@extends('layout')
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>وکالت اشاعت </title>
+    <title>ڈیٹا اندراج - اشاعت ڈیٹا ہب</title>
     
     <!-- Bootstrap 4 RTL CSS -->
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css">
@@ -183,22 +172,7 @@
             background: #667eea;
             transform: translateY(-2px);
         }
-          .form-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .form-header h1 {
-            font-size: 42px;
-            color: #667eea;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .form-header p {
-            font-size: 20px;
-            color: #666;
-        }
+        
         @media (max-width: 768px) {
             .content-container {
                 margin: 10px;
@@ -215,8 +189,6 @@
         }
     </style>
 </head>
-@section('content')
-
 <body>
     <!-- Navbar Container -->
     <div id="navbar-container"></div>
@@ -227,51 +199,49 @@
             <div class="content-container">
                 <!-- Page Header -->
                 <div class="page-header">
-                    <h1 class="page-title">ڈاک روانگی اندراج </h1>
+                    <h1 class="page-title">ڈاک اندراج دفتر وکالت اشاعت تحریک جدید انجمن احمدیہ ربوہ پاکستان ربوہ</h1>
                 </div>
                 
                 <!-- Data Entry Form -->
                 <div class="form-section">
                     <h4><i class="fas fa-edit ml-2"></i>معلومات</h4>
-                    <form id="dataForm" enctype="multipart/form-data" action="add_rawangi" method="POST">
-                        @csrf
+                    <form id="dataForm">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label">تاریخ</label>
-                                    <input type="date" name="date" class="form-control" id="date" required>
+                                    <input type="date" class="form-control" id="date" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">روانگی نمبر</label>
-                                    <input type="number" name="rawangi_no" class="form-control" id="location" placeholder="روانگی نمبر درج کریں" required>
+                                    <label class="form-label">مقام</label>
+                                    <input type="text" class="form-control" id="location" placeholder="مقام درج کریں" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">بنام</label>
-                                    <input type="text" name="name" class="form-control" id="location" placeholder="کس کے نام سے درج کریں" required>
-
+                                    <label class="form-label">نام و پتا مکتوب الیہ</label>
+                                    <textarea class="form-control" id="addressee" rows="4" placeholder="مکتوب الیہ کا نام اور مکمل پتا درج کریں" required></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">درخواست</label>
-                                    <input style="padding:40px 10px;" type="file" name="file" class="form-control" id="location"  rows="6" required>
+                                    <label class="form-label">خلاصہ مضمون</label>
+                                    <textarea class="form-control" id="contentSummary" rows="6" placeholder="مکتوب کے مضمون کا خلاصہ درج کریں" required></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-save ml-2"></i> ڈیٹا محفوظ کریں  
+                                <i class="fas fa-save ml-2"></i>ڈیٹا محفوظ کریں
                             </button>
                             <button type="reset" class="btn btn-secondary btn-lg mr-3">
-                                <i class="fas fa-refresh ml-2"></i> صاف کریں    
+                                <i class="fas fa-refresh ml-2"></i>صاف کریں
                             </button>
                         </div>
                     </form>
@@ -280,27 +250,74 @@
         </div>
     </main>
 
- <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <footer>
-                    © <span id="currentYear"></span>وکالت اشاعت
-                </footer>
+                <p>&copy; 2025 وکالت اشاعت</p>
             </div>
         </div>
     </footer>
- <script>
-const year = new Date().getFullYear();
-        document.getElementById("currentYear").innerText = year;
-       </script>
+
     <!-- Bootstrap 4 JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     
-   
+    <!-- Custom JavaScript -->
+    <script>
+        // Form submission
+        $('#dataForm').submit(function(e) {
+            e.preventDefault();
+            
+            const date = $('#date').val();
+            const location = $('#location').val();
+            const addressee = $('#addressee').val();
+            const contentSummary = $('#contentSummary').val();
+            
+            // Validate form
+            if (!date || !location || !addressee || !contentSummary) {
+                alert('تمام ضروری خانے بھریں');
+                return;
+            }
+            
+            // Create data object
+            const formData = {
+                date,
+                location,
+                addressee,
+                contentSummary,
+                entryDate: new Date().toISOString().split('T')[0],
+                serialNumber: Date.now() // Use timestamp as unique ID
+            };
+            
+            // Store in localStorage (in real app, send to server)
+            let existingData = JSON.parse(localStorage.getItem('correspondenceData') || '[]');
+            existingData.push(formData);
+            localStorage.setItem('correspondenceData', JSON.stringify(existingData));
+            
+            // Success message
+            alert('ڈیٹا کامیابی سے محفوظ ہو گیا!\nآپ کو ڈیٹا دیکھنے کے لیے "ڈیٹا دیکھیں" صفحے پر بھیجا جا رہا ہے۔');
+            
+            // Reset form
+            this.reset();
+            
+            // Redirect to view data page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'view-data.html';
+            }, 2000);
+        });
+        
+        // Set today's date as default
+        $(document).ready(function() {
+            const today = new Date().toISOString().split('T')[0];
+            $('#date').val(today);
+        });
+    </script>
+    
+    <!-- Common Navbar JS -->
+    <script src="js/navbar.js"></script>
+    <script>
+        loadNavbar('add-data');
+    </script>
 </body>
 </html>
-@endsection
- @else {{''}}
- @endif

@@ -281,17 +281,17 @@
             <div class="form-group">
                 <label for="email">ای میل   </label>
                 <input type="text" id="email" name="email" placeholder="example@email.com" required>
-              <!-- @error('email')
+              @error('email')
                     <small class="text-danger">{{ $message }}</small>
-                @enderror -->
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="password">پاس ورڈ</label>
                 <input type="password" id="password" name="password" placeholder="اپنا پاس ورڈ درج کریں" required>
-             <!-- @error('password')
+             @error('password')
                     <small class="text-danger">{{ $message }}</small>
-                @enderror -->
+                @enderror
             </div>
 
             <div class="form-options">

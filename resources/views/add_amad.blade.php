@@ -271,7 +271,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label">درخواست</label>
-                                    <input style="padding:40px 10px;" type="file" name="file" class="form-control" id="location"  rows="6">
+                                    <input style="padding:40px 10px;" type="file" name="file" class="form-control" id="location"  rows="6" required>
                                 </div>
                             </div>
                         </div>

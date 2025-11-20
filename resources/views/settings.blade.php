@@ -1,21 +1,9 @@
- @if(Session::has('user'))
-
-<div style="padding: 10px 20px;">
-            
-            <div class="form-header">
-            <h1>وکالت اشاعت</h1>
-             <div  style="text-align:center;font-size: 20; ">
-                <p>تحریک جدید انجمن احمدیہ ربوہ پاکستان</p>
-            </div>
-        </div>
-        </div>
-
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>وکالت اشاعت </title>
+    <title>سیٹنگز - اشاعت ڈیٹا ہب</title>
     
     <!-- Bootstrap 4 RTL CSS -->
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css">
@@ -216,22 +204,7 @@
             text-align: center;
             color: #adb5bd;
         }
-            .form-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .form-header h1 {
-            font-size: 42px;
-            color: #667eea;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .form-header p {
-            font-size: 20px;
-            color: #666;
-        }
+        
         @media (max-width: 768px) {
             .content-container {
                 margin: 10px;
@@ -248,7 +221,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Navbar Container -->
     <div id="navbar-container"></div>
@@ -259,23 +231,21 @@
             <div class="content-container">
                 <!-- Page Header -->
                 <div class="page-header">
-                    <h1 class="page-title">پروفائل سیٹنگ</h1>
+                    <h1 class="page-title">سیٹنگز</h1>
                 </div>
                 
                 <!-- Personal Information Section -->
                 <div class="settings-section">
                     <h4><i class="fas fa-user ml-2"></i>ذاتی معلومات</h4>
-                    <form id="personalInfoForm" method="POST" action="/ishaat-datahub/edit_pro" >
-                        @csrf
+                    <form id="personalInfoForm" novalidate>
                         <!-- Full Name Field -->
                         <div class="form-group">
                             <label for="fullName" class="form-label">مکمل نام</label>
-                                  <input type="hidden" name="id" value="{{$data['id']}}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" name="name" value="{{ $data['name'] }}"  required>
+                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="اپنا مکمل نام درج کریں" required>
                             </div>
                         </div>
 
@@ -286,61 +256,191 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 </div>
-                                <input type="email" class="form-control" name="email" value="{{ $data['email'] }}"  required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="اپنا ای میل پتہ درج کریں" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">پاس ورڈ</label>
-                            <div class="input-group">   
+                        <div class="input-group">
                             <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control"  name="password"   minlength="6">
-                            <!-- <input type="password" class="form-control" name="password_confirmation" value="{{ $data->password_confirmation }}"  minlength="8">  -->
+                            <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="نیا پاس ورڈ درج کریں" minlength="8">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="toggleNewPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
                             </div>
                         </div>
-                         <div class="input-group-append">
-                               <button type="submit" class="btn btn-primary btn-block" >
-                                <i class="fas fa-save mr-2"></i> تبدیلیاں محفوظ کریں
-                            </button>
                     </form>
                 </div>
 
              
 
                 
-         
+                <div class="settings-section" style="text-align: center;">
+                    <div class="row">
+                            <button type="button" class="btn btn-primary btn-block" id="saveSettings" >
+                                <i class="fas fa-save mr-2"></i> تبدیلیاں محفوظ کریں
+                            </button>
+                      
+                    </div>
                    
                 </div>
             </div>
         </div>
     </main>
 
-   <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <footer>
-                    © <span id="currentYear"></span>وکالت اشاعت
-                </footer>
+                <p>&copy; 2025 وکالت اشاعت</p>
             </div>
         </div>
     </footer>
- <script>
-const year = new Date().getFullYear();
-        document.getElementById("currentYear").innerText = year;
-       </script>
+
     <!-- Bootstrap 4 JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom JavaScript -->
-      
+    <script>
+        $(document).ready(function() {
+            // Toggle new password visibility
+            $('#toggleNewPassword').click(function() {
+                const passwordField = $('#newPassword');
+                const eyeIcon = $(this).find('i');
+                
+                if (passwordField.attr('type') === 'password') {
+                    passwordField.attr('type', 'text');
+                    eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    passwordField.attr('type', 'password');
+                    eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+            
+            // Load current settings (simulate loading from server)
+            loadCurrentSettings();
+            
+            // Save settings
+            $('#saveSettings').click(function() {
+                saveAllSettings();
+            });
+            
+            // Cancel settings
+            $('#cancelSettings').click(function() {
+                if (confirm('کیا آپ واقعی تبدیلیاں رد کرنا چاہتے ہیں؟')) {
+                    loadCurrentSettings();
+                    $('.form-control').removeClass('is-invalid is-valid');
+                }
+            });
+            
+            // Delete account
+            $('#deleteAccount').click(function() {
+                if (confirm('خبردار: یہ عمل واپس نہیں ہو سکتا۔ کیا آپ واقعی اپنا اکاؤنٹ ڈیلیٹ کرنا چاہتے ہیں؟')) {
+                    // Here you would typically send delete request to server
+                    alert('اکاؤنٹ ڈیلیٹ کرنے کی درخواست بھیج دی گئی ہے۔');
+                }
+            });
+            
+            // Remove validation classes on input
+            $('.form-control').on('input', function() {
+                $(this).removeClass('is-invalid is-valid');
+            });
+        });
+        
+        function loadCurrentSettings() {
+            // Simulate loading current user settings
+            // In a real application, this would be loaded from the server
+            const currentSettings = {
+                fullName: 'احمد علی',
+                email: 'ahmad@example.com'
+            };
+            
+            // Populate form fields
+            $('#fullName').val(currentSettings.fullName);
+            $('#email').val(currentSettings.email);
+        }
+        
+        function saveAllSettings() {
+            let isValid = true;
+            
+            // Validate Personal Information
+            const fullName = $('#fullName').val();
+            if (!fullName || fullName.trim().length < 2) {
+                $('#fullName').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#fullName').removeClass('is-invalid').addClass('is-valid');
+            }
+            
+            // Email validation
+            const email = $('#email').val();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email || !emailRegex.test(email)) {
+                $('#email').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#email').removeClass('is-invalid').addClass('is-valid');
+            }
+            
+            // Password validation
+            const newPassword = $('#newPassword').val();
+            const confirmNewPassword = $('#confirmNewPassword').val();
+            
+            if (newPassword) {
+                // New password validation
+                if (newPassword.length < 8) {
+                    $('#newPassword').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#newPassword').removeClass('is-invalid').addClass('is-valid');
+                }
+                
+                // Confirm password validation
+                if (confirmNewPassword !== newPassword) {
+                    $('#confirmNewPassword').addClass('is-invalid');
+                    alert('نیا پاس ورڈ اور تصدیقی پاس ورڈ میں فرق ہے۔');
+                    isValid = false;
+                } else {
+                    $('#confirmNewPassword').removeClass('is-invalid').addClass('is-valid');
+                }
+            }
+            
+            if (isValid) {
+                // Gather all settings
+                const settings = {
+                    personalInfo: {
+                        fullName: $('#fullName').val(),
+                        email: $('#email').val()
+                    }
+                };
+                
+                // Add password change if needed
+                if (newPassword) {
+                    settings.passwordChange = {
+                        newPassword: newPassword
+                    };
+                }
+                
+                // Here you would typically send the data to your server
+                console.log('محفوظ ہونے والی سیٹنگز:', settings);
+                
+                // Show success message
+                alert('سیٹنگز کامیابی سے محفوظ ہو گئیں!');
+                
+                // Clear password fields
+                $('#newPassword, #confirmNewPassword').val('');
+                $('.form-control').removeClass('is-valid is-invalid');
+            }
+        }
+    </script>
+    
     <!-- Common Navbar JS -->
     <script src="js/navbar.js"></script>
- 
+    <script>
+        loadNavbar('settings');
+    </script>
 </body>
 </html>
-
- @else {{''}}
- @endif

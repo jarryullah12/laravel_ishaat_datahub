@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اشاعت رجسٹر دیکھیں - وکالت اشاعت</title>
+    
+    <!-- Bootstrap 4 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Jameel Noori Nastaleeq Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Common Navbar CSS -->
+    <link rel="stylesheet" href="css/navbar.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            direction: rtl;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px 0;
+        }
+        
+        .content-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 1400px;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .page-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .table-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .table-section h4 {
+            color: #495057;
+            margin-bottom: 25px;
+            font-weight: bold;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .table {
+            border: 2px solid #dee2e6;
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #495057;
+            padding: 15px 10px;
+            white-space: nowrap;
+        }
+        
+        .table td {
+            border: 1px solid #dee2e6;
+            padding: 12px 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #e3f2fd;
+            transform: translateY(-1px);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success, .btn-danger {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin: 0 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            border: none;
+        }
+        
+        .btn-success:hover, .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-info {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+        
+        .stats-cards {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #495057 0%, #343a40 100%);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #495057;
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: #adb5bd;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .content-container {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .table-section {
+                padding: 20px;
+            }
+            
+            .stats-cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-container">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-list ml-2"></i>
+                        روانگی ڈاک فہرست
+                    </h1>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalEntries">0</div>
+                        <div class="stat-label">کل انٹریز</div>
+                    </div>
+                </div>
+
+
+                <!-- Table Section -->
+                <div class="table-section">
+                    <h4>
+                        <i class="fas fa-table ml-2"></i>
+                        اشاعت ڈاک فہرست
+                    </h4>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="entriesTable">
+                            <thead>
+                                <tr>
+                                    <th>روانگی نمبر</th>
+                                    <th>تاریخ</th>
+                                    <th>بنام</th>
+                                    <th>عمل</th>
+                                </tr>
+                            </thead>
+                            <tbody id="entriesBody">
+                                <!-- Data will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="noDataMessage" class="no-data" style="display: none;">
+                        <i class="fas fa-inbox fa-3x mb-3" style="color: #dee2e6;"></i>
+                        <h5>کوئی ڈیٹا موجود نہیں</h5>
+                        <p>ابھی تک کوئی انٹری شامل نہیں کی گئی</p>
+                        <button class="btn btn-primary" onclick="window.location.href='add-ishaat-register.html'">
+                            <i class="fas fa-plus ml-2"></i>پہلی انٹری شامل کریں
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 وکالت اشاعت</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 4 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        let allEntries = [];
+        let filteredEntries = [];
+
+        $(document).ready(function() {
+            loadData();
+            updateStatistics();
+            displayEntries();
+        });
+
+        function loadData() {
+            allEntries = JSON.parse(localStorage.getItem('ishaatRegisterEntries') || '[]');
+            
+            // Add dummy entries if no data exists
+            if (allEntries.length === 0) {
+                allEntries = [
+                    {
+                        serialNumber: 'RD-001/2025',
+                        date: '2025-01-15',
+                        name: 'محمد احمد صاحب - کراچی'
+                    },
+                    {
+                        serialNumber: 'RD-002/2025',
+                        date: '2025-01-16',
+                        name: 'علی حسن صاحب - لاہور'
+                    },
+                    {
+                        serialNumber: 'RD-003/2025',
+                        date: '2025-01-17',
+                        name: 'فاطمہ خان صاحبہ - اسلام آباد'
+                    }
+                ];
+                
+                // Save dummy data to localStorage
+                localStorage.setItem('ishaatRegisterEntries', JSON.stringify(allEntries));
+            }
+            
+            filteredEntries = [...allEntries];
+        }
+
+        function updateStatistics() {
+            const total = allEntries.length;
+            document.getElementById('totalEntries').textContent = total;
+        }
+
+        function displayEntries() {
+            const tbody = document.getElementById('entriesBody');
+            const noDataMessage = document.getElementById('noDataMessage');
+            
+            tbody.innerHTML = '';
+            
+            if (filteredEntries.length === 0) {
+                document.getElementById('entriesTable').style.display = 'none';
+                noDataMessage.style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('entriesTable').style.display = 'table';
+            noDataMessage.style.display = 'none';
+            
+            filteredEntries.forEach((entry, index) => {
+                const row = `
+                    <tr>
+                        <td>${entry.serialNumber}</td>
+                        <td>${entry.date}</td>
+                        <td>${entry.name}</td>
+                        <td>
+                            <button class="btn btn-success btn-sm" onclick="editEntry(${index})" title="تبدیل کریں">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteEntry(${index})" title="ڈیلیٹ کریں">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function deleteEntry(index) {
+            if (confirm('کیا آپ واقعی یہ انٹری ڈیلیٹ کرنا چاہتے ہیں؟')) {
+                const entryToDelete = filteredEntries[index];
+                const originalIndex = allEntries.findIndex(entry => 
+                    entry.serialNumber === entryToDelete.serialNumber && 
+                    entry.date === entryToDelete.date && 
+                    entry.name === entryToDelete.name
+                );
+                
+                if (originalIndex !== -1) {
+                    allEntries.splice(originalIndex, 1);
+                    localStorage.setItem('ishaatRegisterEntries', JSON.stringify(allEntries));
+                    
+                    loadData();
+                    updateStatistics();
+                    displayEntries(); // Refresh filtered data
+                    
+                    alert('انٹری کامیابی سے ڈیلیٹ کر دی گئی!');
+                }
+            }
+        }
+
+        function editEntry(index) {
+            const entry = filteredEntries[index];
+            
+            // Store the entry data for editing
+            localStorage.setItem('editingEntry', JSON.stringify(entry));
+            
+            // Redirect to add page with edit mode
+            window.location.href = 'add-ishaat-register.html?edit=true';
+        }
+
+    </script>
+    
+    <!-- Common Navbar JS -->
+    <script src="js/navbar.js"></script>
+    <script>
+        loadNavbar('view-ishaat-register');
+    </script>
+</body>
+</html>

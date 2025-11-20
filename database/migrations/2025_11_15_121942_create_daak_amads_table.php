@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('maqam');
             $table->text('name');
             $table->text('detail');
-            $table->text('file');
+            $table->string('file')->nullable();
 
             $table->timestamps();
         });

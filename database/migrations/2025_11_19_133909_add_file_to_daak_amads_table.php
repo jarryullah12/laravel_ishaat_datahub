@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daak_rawangis', function (Blueprint $table) {
-            $table->id();
-            $table->text('rawangi_no');
-            $table->text('date');
-            $table->text('name');
-            $table->string('file')->nullable();
-
-
-            $table->timestamps();
+        Schema::table('daak_amads', function (Blueprint $table) {
+            //
         });
     }
 
@@ -28,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('daak_rawangis');
+        Schema::table('daak_amads', function (Blueprint $table) {
+            //
+        });
     }
 };

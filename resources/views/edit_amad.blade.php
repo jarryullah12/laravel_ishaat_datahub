@@ -8,7 +8,6 @@
             </div>
         </div>
         </div>
-@extends('layout')
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
@@ -215,7 +214,6 @@
         }
     </style>
 </head>
-@section('content')
 
 <body>
     <!-- Navbar Container -->
@@ -300,6 +298,5 @@ const year = new Date().getFullYear();
  
 </body>
 </html>
-@endsection
  @else {{''}}
  @endif
